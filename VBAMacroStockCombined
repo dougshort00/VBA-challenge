@@ -1,1 +1,21 @@
+Sub CombinedStockData():
 
+Sheets.Add.Name = "Combined_Data"
+
+Sheets("Combined_Data").Move Before:=Sheets(1)
+
+Set combined_sheet = Worksheets("Combined_Data")
+
+For Each ws In Worksheets
+
+lastRow = combined_sheets.Cells(Rows.Count, "A").End(x1Up).Row + 1
+
+lastRowYear = ws.Cells(Rows.Count, "A").End(x1Up).Row - 1
+
+combined_sheet.Range("A" & lastRow & ":K" & ((lastRowYear - 1) + lastRow)).Value = ws.Range("A2:K" & (lastRowYear + 1)).Value
+
+Next ws
+
+combined_sheet.Columns("A:K").AutoFit
+
+End Sub
