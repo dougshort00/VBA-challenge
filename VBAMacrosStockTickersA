@@ -1,0 +1,30 @@
+Sub StockTickerVolume():
+
+Dim ticker As String
+Dim volume As Long
+Dim summaryRow As Integer
+
+summaryRow = 2
+
+
+For i = 2 To 22771
+    If (Cells(i + 1, 1).Value <> Cells(i, 1).Value) Then
+    
+    volume = volume + Cells(i, 3).Value
+    ticker = Cells(i, 1).Value
+    
+    Cells(summaryRow, 9).Value = ticker
+    Cells(summaryRow, 10).Value = volume
+   
+    summaryRow = summaryRow + 1
+    volume = 0
+    
+Else
+
+    volume = volume + Cells(i, 3).Value
+    
+  End If
+
+Next i
+
+End Sub
